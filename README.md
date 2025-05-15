@@ -11,3 +11,9 @@ First guest is the username for RabbitMQ and the second guest is the password. T
 ![Slow Subscriber](Slowsub.png)
 
 I noticed that my machine reached 21, this is because the publisher side will keep publishing sending it to the subscriber but because there is a 1 second delay between each message it processes. So as messages come in the subscriber cannot handle them and therefore it leads to messages stacking up as the rate the come in is faster than the rate they can be processed.
+
+## Running at least three subscribers
+
+![Three Subscribers](Threesubs.png)
+
+The queue peaked at 8 messages which is better from the initial 21. This improvement is because it is being processed in parallel by 3 subscribers which means that there is less back log. This is because the rate of processing is faster but not the same. So while there is improvement as it almost tripled in rate there is small delay.
